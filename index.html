@@ -77,90 +77,269 @@ nav .recipe-list li a:hover::after {
     transform: scaleX(1);
 }
 
-
-/*список ВКонтакте*/
-.h2 {
-    margin-bottom: 30px;
+/* Новый стиль для аккордеона */
+.modern-accordion {
+        margin: 30px 0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
-.accordion {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+    .modern-accordion-item {
+        background: linear-gradient(135deg, #1e2b4a 0%, #131d33 100%);
+        margin-bottom: 8px;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s ease;
     }
-.accordion-item {
-    border-bottom: 1px solid #ffffff;
+    
+    .modern-accordion-item:last-child {
+        margin-bottom: 0;
     }
-.accordion-item:last-child {
-    border-bottom: none;
+    
+    .modern-accordion-header {
+        padding: 18px 25px;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #2a3b5f 0%, #1a2440 100%);
     }
-.accordion-header {
-    padding: 15px 20px;
-    background-color: #133457;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s;
-    font-size: 16px;
+    
+    .modern-accordion-header:hover {
+        background: linear-gradient(135deg, #324b7a 0%, #212d55 100%);
     }
-.accordion-header:hover {
-    background-color: #133457;
+    
+    .modern-accordion-header::after {
+        content: '+';
+        font-size: 24px;
+        font-weight: 300;
+        transition: all 0.3s ease;
+        color: #4facfe;
     }
-.accordion-header::after {
-            content: '';
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgb(0, 0, 0);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-        /*кнопка*/
-        .accordion-item.active .accordion-header::after {
-            content: '−';
-            background-color: rgb(255, 255, 255);
-            color: #133457;
-        }
-        .accordion-content {
-            padding: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background-color: rgb(255, 255, 255);
-        }
-        .accordion-item.active .accordion-content {
-            max-height: 500px;
-            padding: 15px 20px;
-        }
-        .content-link {
-            display: block;
-            padding: 10px 0;
-            color: #133457;
-            text-decoration: none;
-            border-bottom: 1px dashed #ffffff;
-            transition: all 0.2s;
-        }
-        .content-link:last-child {
-            border-bottom: none;
-        }
-        .content-link:hover {
-            color: #133457;
-            padding-left: 5px;
-        }
+    
+    .modern-accordion-item.active .modern-accordion-header::after {
+        content: '-';
+        color: #00f2fe;
+        transform: rotate(180deg);
+    }
+    
+    .modern-accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        background: rgba(30, 43, 74, 0.7);
+    }
+    
+    .modern-accordion-item.active .modern-accordion-content {
+        max-height: 1000px;
+    }
+    
+    .modern-content-link {
+        display: block;
+        padding: 14px 25px;
+        color: #d1e3ff;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        font-size: 16px;
+        border-left: 3px solid transparent;
+    }
+    
+    .modern-content-link:hover {
+        color: #ffffff;
+        background: rgba(74, 144, 226, 0.1);
+        border-left: 3px solid #4facfe;
+        padding-left: 30px;
+    }
+    
+    .modern-content-link::before {
+        content: '';
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        background-color: #4facfe;
+        border-radius: 50%;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    
+    .modern-content-link:hover::before {
+        opacity: 1;
+        left: 20px;
+    }
+    
+    /* Анимация для аккордеона */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .modern-accordion-item.active .modern-accordion-content .modern-content-link {
+        animation: fadeIn 0.4s ease forwards;
+    }
+    
+    .modern-accordion-item.active .modern-accordion-content .modern-content-link:nth-child(1) { animation-delay: 0.1s; }
+    .modern-accordion-item.active .modern-accordion-content .modern-content-link:nth-child(2) { animation-delay: 0.2s; }
+    .modern-accordion-item.active .modern-accordion-content .modern-content-link:nth-child(3) { animation-delay: 0.3s; }
+    .modern-accordion-item.active .modern-accordion-content .modern-content-link:nth-child(4) { animation-delay: 0.4s; }
+    .modern-accordion-item.active .modern-accordion-content .modern-content-link:nth-child(5) { animation-delay: 0.5s; }
+    .modern-accordion-item.active .modern-accordion-content .modern-content-link:nth-child(6) { animation-delay: 0.6s; }
         .block2{
             color: #ffffff;
             background-color: #333333;
-            margin: 10px 100px 5px 5px;
-            padding: 5px 10px 1px 10px;
+            margin: 10px 55px 30px 0;
+            padding: 5px 10px 1px 20px;
             border-radius: 15px;
             font-size: 19px;
         }
+
+    /* трети блок стили*/
+    
+    .split-section {
+            display: flex;
+            padding: 1px 5px 2px 6px;
+            border: 1px solid #ffffff;
+            box-sizing: border-box;
+            border-radius: 15px;
+            margin: 10px 80px 5px 0;
+        }
+        
+        .left-part, .right-part {
+            flex: 1;
+            padding: 5px;
+            box-sizing: border-box;
+           
+        }
+        
+        .left-part {
+            border-right: 2px solid #ffffff;
+        }
+        
+        .right-part {
+            /* Правая часть не требует особых стилей */
+            margin: 0 20px 0 20px;
+        }
+        
+        /* Для мобильных устройств - делаем вертикальное расположение */
+        @media (max-width: 768px) {
+            .split-section {
+                flex-direction: column;
+            }
+            
+            .left-part {
+                border-right: none;
+                border-bottom: 2px solid #ffffff;
+            }
+        }
+        /*СТИЛИ ТЕКСТА В ТАБЛИЧКЕ*/
+        .description-block {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 20px;
+        }
+        
+        .description-header {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .description-title {
+            font-weight: bold;
+            white-space: nowrap; /* Чтобы "Описание:" не переносилось */
+            padding-right: 10px; /* Отступ после двоеточия */
+        }
+        
+        .description-text {
+            margin: 0; /* Убираем все отступы */
+        }
+        
+        @media (max-width: 500px) {
+            .description-header {
+                flex-direction: column;
+            }
+            .description-title {
+                white-space: normal;
+                padding-bottom: 5px;
+            }
+        }
+        .plus{
+            padding: 1px 10px 1px 10px;
+            margin: 20px 76px 20px 1px;
+            color: #000000;
+            background-color: #ffffff;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 20px;
+        }
+        .description-text a {
+    color: #2A5885;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: bold;
+    }
+
+    .description-text a:hover {
+    color: #45688E;
+    text-decoration: underline;
+    }
+    /* Добавьте эти стили в ваш <style> */
+.image-text-section {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.text-content {
+    flex: 1.5;
+}
+
+.image-content {
+    flex: 1;
+    text-align: center;
+}
+
+.section-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .image-text-section {
+        flex-direction: column;
+    }
+    
+    .image-content {
+        order: -1; /* Картинка будет сверху на мобильных */
+        margin-bottom: 20px;
+    }
+}
+h3 {
+    transition: all 0.3s ease;
+}
+h3:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+@media (max-width: 768px) {
+    h3 {
+        font-size: 22px;
+        padding: 15px;
+        margin: 25px 0;
+    }
+}
     </style>
 </head>
 <body>
@@ -181,9 +360,84 @@ nav .recipe-list li a:hover::after {
 
     <!-- ПЕРВЫЙ БЛОК -->
     <section id="selection1">
-        <h1 style="font-size: 40px; margin: 0 0 0 25px;">Telegram VS ВКонтакте<br> <p style="padding: 0; font-size: 25px;">Что выбрать?</p></h1>
-        <h3>Сравнительная характеристика Telegram и ВКонтакте</h3>
-            <p> В современном мире мессенджеры и социальные сети играют важную роль в общении и обмене информацией.<br>
+        <h1 style="
+            font-size: 42px;
+            margin: 0 0 15px 0;
+            padding: 20px 25px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #003569 0%, #1d1d1d 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        ">
+            Telegram VS ВКонтакте
+            <p style="
+                padding: 0;
+                font-size: 24px;
+                margin: 10px 0 0 0;
+                font-weight: 400;
+                text-transform: none;
+                letter-spacing: normal;
+                color: rgba(255, 255, 255, 0.9);
+                font-family: inherit;">
+                Что выбрать?</p>
+            <div style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            "></div>
+        </h1>
+        
+        <div style="display: flex; justify-content: center; gap: 20px; margin: 20px 0;">
+            <img src="https://i.pinimg.com/736x/d8/07/59/d807599f5b463e72a0410eefda7a5bb4.jpg" 
+                 style="width: 600px; height: 500px; object-fit: cover; border-radius: 8px;">
+            <img src="https://i.pinimg.com/736x/87/de/39/87de392a16a1ce4728600043bb688567.jpg" 
+                 style="width: 600px; height: 500px; object-fit: cover; border-radius: 8px;">
+        </div>
+        <h3 style="
+    font-size: 24px;
+    margin: 10px 0 5px 0;
+    padding: 12px 25px;
+    background: #e6f0ff;
+    color: #000000;
+    border-radius: 50px;
+    display: inline-block;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(74, 144, 226, 0.2);
+    position: relative;
+    overflow: hidden;
+">
+    <span style="
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        width: 30px;
+        height: 30px;
+        background: #4facfe;
+        border-radius: 50%;
+        opacity: 0.3;
+    "></span>
+    <span style="
+        position: absolute;
+        bottom: -15px;
+        left: -15px;
+        width: 40px;
+        height: 40px;
+        background: #00f2fe;
+        border-radius: 50%;
+        opacity: 0.2;
+    "></span>
+    Сравнительная характеристика Telegram и ВКонтакте
+</h3>
+        <p> В современном мире мессенджеры и социальные сети играют важную роль в общении и обмене информацией.<br>
             Telegram и ВКонтакте — два популярных приложения, которые имеют свои уникальные особенности и предназначение.<br>
              В этой статье мы рассмотрим общие черты и различия между ними, а также плюсы каждого приложения.</p>
              <p>«Вконтакте» (международный нейм — VK) — российская крупнейшая социальная сеть, доступная на 85 языках мира. 
@@ -199,48 +453,123 @@ nav .recipe-list li a:hover::after {
         <section id="selection2">
     <!-- СОДЕРЖАНИЕ ВКОНТАКТЕ-->    
             <h2 class="h2">История ВКонтакте</h2>
-        <div class="accordion">
-            <div class="accordion-item">
-                    <div class="accordion-header">СОДЕРЖАНИЕ</div>
-                        <div class="accordion-content">
-                        <a href="#1" class="content-link">1. Кто придумал ВКонтакте</a>
-                        <a href="#2" class="content-link">2. Выбор названия и запуск ВКонтакте</a>
-                        <a href="#3" class="content-link">3. Cамый популярный интернет-ресурс в России</a>
-                        <a href="#4" class="content-link">4. Запуск мобильного приложения</a>
-                        <a href="#5" class="content-link">5. Дуров продает ВКонтакте</a>
-                        <a href="#7" class="content-link">6. Как появился VK Fest</a>
-                        <a href="#8" class="content-link">9. Умная лента и новые алгоритмы</a>
-                        <a href="#9" class="content-link">10. Развитие ВКонтакте под руководством Mail.ru Group (VK)</a>
-                        <a href="#10" class="content-link">12. Кому сегодня принадлежит ВКонтакте</a>
+                    
+                    <div class="modern-accordion">
+                        <div class="modern-accordion-item">
+                            <div class="modern-accordion-header">СОДЕРЖАНИЕ</div>
+                            <div class="modern-accordion-content">
+                                <a href="#1" class="modern-content-link">1. Кто придумал ВКонтакте</a>
+                                <a href="#2" class="modern-content-link">2. Выбор названия и запуск ВКонтакте</a>
+                                <a href="#3" class="modern-content-link">3. Самый популярный интернет-ресурс в России</a>
+                                <a href="#4" class="modern-content-link">4. Запуск мобильного приложения</a>
+                                <a href="#5" class="modern-content-link">5. Дуров покидает ВКонтакте</a>
+                                <a href="#6" class="modern-content-link">6. Развитие ВКонтакте под руководством Mail.ru Group (VK)</a>
+                            </div>
+                        </div>
                     </div>
-            </div>
-        </div>
 
-    <!-- Здесь будут остальные разделы с соответствующими id -->
-        <section id="1">
-        <h3> Кто придумал ВКонтакте?</h3>
-        <p>ВКонтакте — одна из самых популярных социальных сетей в России и странах СНГ.
-        История её создания началась в 2006 году, когда студент Санкт-Петербургского государственного 
-        университета Павел Дуров решил создать платформу для общения студентов и их друзей.</p>
-        <p>Толчком к созданию ВКонтакте послужила встреча Дурова с одноклассником Вячеславом Мирилашвили. 
-            Вячеслав увидел интервью с Дуровым в газете "Деловой Петербург", в котором тот рассказывал о своем 
-            форуме spbgu.ru, созданном для студентов Санкт-Петербургского университета. Тогда же возникла идея 
-            написать бывшему однокласснику Льву Левиеву и в перспективе создать совместный проект.</p>
-        <p>В 2004 году студенты американских университетов начали активно регистрироваться на платформе Facebook, 
-            которая позволяла находить и просматривать страницы других студентов. Эта социальная сеть вдохновила 
-            основателей ВКонтакте на создание своей платформы. Лев Левиев и Вячеслав Мирилашвили, обучаясь за 
-            границей, сами пользовались Facebook. Павел Дуров, создатель ВКонтакте, никогда не скрывал, что черпал 
-            идеи из Facebook, но при этом добавлял уникальные функции, которые отличают ВКонтакте от своего 
-            зарубежного аналога. Несмотря на то что Facebook послужил ориентиром и источником вдохновения, 
-            код для ВКонтакте был написан командой Дурова самостоятельно.</p>
-            <p>Павел Дуров собрал команду разработчиков и предоставил свою квартиру в качестве первого офиса. 
-                Инвестором проекта стал его одноклассник Вячеслав Мирилашвили, который занял у своего отца-миллиардера 
-                30 тысяч долларов. Исполнительным директором "ВКонтакте" стал Лев Левиев, который занимал эту должность 
-                до апреля 2012 года.</p>
+        <section id="1" style="display: flex; flex-direction: row; align-items: flex-start; gap: 30px; margin: 20px 0;">
+            <!-- Текст слева -->
+            <div style="flex: 2;">
+                <h3 style="
+    font-size: 24px;
+    margin: 25px 0 5px;
+    padding: 16px 25px;
+    color: #d1e3ff;
+    background: linear-gradient(135deg, #1e2b4a 0%, #131d33 100%);
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+">
+    Кто придумал ВКонтакте?
+    <span style="
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4facfe, #00f2fe);
+        transition: width 0.3s ease;
+    "></span>
+</h3>
+
+<script>
+    document.querySelector('h3').addEventListener('mouseover', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.querySelector('span').style.width = '100%';
+    });
+    document.querySelector('h3').addEventListener('mouseout', function() {
+        this.style.transform = 'none';
+        this.querySelector('span').style.width = '0';
+    });
+</script>
+                <p>ВКонтакте — одна из самых популярных социальных сетей в России и странах СНГ.
+                История её создания началась в 2006 году, когда студент Санкт-Петербургского государственного 
+                университета Павел Дуров решил создать платформу для общения студентов и их друзей.</p>
+                <p>Толчком к созданию ВКонтакте послужила встреча Дурова с одноклассником Вячеславом Мирилашвили. 
+                    Вячеслав увидел интервью с Дуровым в газете "Деловой Петербург", в котором тот рассказывал о своем 
+                    форуме spbgu.ru, созданном для студентов Санкт-Петербургского университета. Тогда же возникла идея 
+                    написать бывшему однокласснику Льву Левиеву и в перспективе создать совместный проект.</p>
+                <p>В 2004 году студенты американских университетов начали активно регистрироваться на платформе Facebook, 
+                    которая позволяла находить и просматривать страницы других студентов. Эта социальная сеть вдохновила 
+                    основателей ВКонтакте на создание своей платформы. Лев Левиев и Вячеслав Мирилашвили, обучаясь за 
+                    границей, сами пользовались Facebook. Павел Дуров, создатель ВКонтакте, никогда не скрывал, что черпал 
+                    идеи из Facebook, но при этом добавлял уникальные функции, которые отличают ВКонтакте от своего 
+                    зарубежного аналога. Несмотря на то что Facebook послужил ориентиром и источником вдохновения, 
+                    код для ВКонтакте был написан командой Дурова самостоятельно.</p>
+                <p>Павел Дуров собрал команду разработчиков и предоставил свою квартиру в качестве первого офиса. 
+                    Инвестором проекта стал его одноклассник Вячеслав Мирилашвили, который занял у своего отца-миллиардера 
+                    30 тысяч долларов. Исполнительным директором "ВКонтакте" стал Лев Левиев, который занимал эту должность 
+                    до апреля 2012 года.</p>
+            </div>
+            
+            <!-- Картинка справа -->
+            <div style="flex: 1; align-self: center;">
+                <img src="https://avatars.mds.yandex.net/i?id=ab78f8b3e7af027a710545ff7ed81f0c_l-8340358-images-thumbs&n=13" 
+                     alt="Основатели ВКонтакте" 
+                     style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+            </div>
         </section>
     
         <section id="2">
-        <h3>Выбор названия и запуск ВКонтакте</h3>
+            <h3 style="
+            font-size: 24px;
+            margin: 25px 0 5px;
+            padding: 16px 25px;
+            color: #d1e3ff;
+            background: linear-gradient(135deg, #1e2b4a 0%, #131d33 100%);
+            border-radius: 8px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        ">
+            Выбор названия и запуск ВКонтакте
+            <span style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: linear-gradient(90deg, #4facfe, #00f2fe);
+                transition: width 0.3s ease;
+            "></span>
+        </h3>
+        
+        <script>
+            document.querySelector('h3').addEventListener('mouseover', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.querySelector('span').style.width = '100%';
+            });
+            document.querySelector('h3').addEventListener('mouseout', function() {
+                this.style.transform = 'none';
+                this.querySelector('span').style.width = '0';
+            });
+        </script>
         <p>Идея назвать соцсеть "ВКонтакте" пришла Павлу Дурову, когда он переосмыслил фразу 
             "В полном контакте с информацией", которая являлась джинглом радиостанции "Эхо Москвы". 
             Название оказалось более универсальным. Слово "контакт" не создавало ассоциаций 
@@ -260,10 +589,45 @@ nav .recipe-list li a:hover::after {
             пользователей, а аудитория ВКонтакте выросла до более чем 3 млн. Несмотря на это, в этом же 
             году ВКонтакте обошёл Одноклассники по посещаемости и занял 2-е по популярности место в Рунете, 
             уступив первенство развлекательному сайту Bash.im.</p>
+            <img src="https://martrending.ru/pic/lb4/intext_74381982-a2e9-4427-9457-4d391c2c1dfa_big.webp">
         </section>
     
         <section id="3">
-        <h3>Cамый популярный интернет-ресурс в России</h3>
+            <h3 style="
+            font-size: 24px;
+            margin: 25px 0 5px;
+            padding: 16px 25px;
+            color: #d1e3ff;
+            background: linear-gradient(135deg, #1e2b4a 0%, #131d33 100%);
+            border-radius: 8px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        ">
+            Самый популярный интернет ресурс в России
+            <span style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: linear-gradient(90deg, #4facfe, #00f2fe);
+                transition: width 0.3s ease;
+            "></span>
+        </h3>
+        
+        <script>
+            document.querySelector('h3').addEventListener('mouseover', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.querySelector('span').style.width = '100%';
+            });
+            document.querySelector('h3').addEventListener('mouseout', function() {
+                this.style.transform = 'none';
+                this.querySelector('span').style.width = '0';
+            });
+        </script>
         <p>В 2008 году, менее чем через полтора года после своего запуска, 
             ВКонтакте уверенно заняла позицию самого популярного интернет-ресурса в России, 
             согласно данным Alexa.com. Этот успех стал результатом не только удачного выбора 
@@ -288,52 +652,1434 @@ nav .recipe-list li a:hover::after {
             продвижения своего контента, что способствовало дальнейшему росту популярности социальной сети.</p>
         </section>
         
-        <section id="4">
-        <h3>Запуск мобильного приложения</h3>
-        <p>В марте 2011 года ВКонтакте сделала важный шаг в развитии своей платформы, запустив официальное 
-            мобильное приложение для iPhone. Это событие стало значительным шагом в адаптации социальной сети 
-            к растущему спросу на мобильные технологии. Пользователи получили возможность скачивать приложение 
-            из App Store, что сделало доступ к ВКонтакте более удобным и быстрым. Теперь они могли общаться, 
-            просматривать ленты новостей и делиться контентом прямо со своих мобильных устройств, не прибегая 
-            к мобильной версии сайта.</p>
-        <p>В июне того же года ВКонтакте расширила свои горизонты, выпустив официальный клиент для телефонов 
-            на платформе Android. Это решение значительно упростило жизнь пользователей, так как теперь они могли 
-            использовать полноценное мобильное приложение, которое обеспечивало более удобный интерфейс и функционал 
-            по сравнению с мобильной версией сайта. Пользователи могли легко загружать фотографии, отправлять сообщения 
-            и оставаться на связи с друзьями в любое время и в любом месте.</p>
-        <p>Однако у ВКонтакте возникли проблемы с App Store, связанные с авторскими правами. В частности, из-за жалоб 
-            правообладателей на нарушение авторских прав, социальной сети пришлось убрать музыкальный раздел из приложения 
-            для iOS. Это решение вызвало недовольство среди пользователей, которые активно использовали ВКонтакте для 
-            прослушивания музыки и обмена музыкальными композициями. В результате многие пользователи начали искать 
-            альтернативные платформы для доступа к музыке, что негативно сказалось на популярности ВКонтакте среди меломанов.</p>
-        <p>Полностью легализовать музыкальные композиции во ВКонтакте удалось только в июле 2016 года. 
-            Это стало возможным благодаря заключению соглашений с крупными музыкальными лейблами и правообладателями, 
-            что позволило пользователям легально слушать и делиться музыкой на платформе. Легализация музыкального 
-            контента не только улучшила имидж ВКонтакте, но и позволила вернуть пользователей, которые ранее покинули 
-            платформу из-за проблем с доступом к музыке.</p>
+        <section id="4" style="display: flex; flex-direction: row; align-items: flex-start; gap: 30px; margin: 20px 0;">
+            <!-- Текст слева -->
+            <div style="flex: 2;">
+                <h3 style="
+    font-size: 24px;
+    margin: 25px 0 5px;
+    padding: 16px 25px;
+    color: #d1e3ff;
+    background: linear-gradient(135deg, #1e2b4a 0%, #131d33 100%);
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+">
+    Запуск мобильного приложения
+    <span style="
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4facfe, #00f2fe);
+        transition: width 0.3s ease;
+    "></span>
+</h3>
+
+<script>
+    document.querySelector('h3').addEventListener('mouseover', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.querySelector('span').style.width = '100%';
+    });
+    document.querySelector('h3').addEventListener('mouseout', function() {
+        this.style.transform = 'none';
+        this.querySelector('span').style.width = '0';
+    });
+</script>
+                <p>В марте 2011 года ВКонтакте сделала важный шаг в развитии своей платформы, запустив официальное 
+                    мобильное приложение для iPhone. Это событие стало значительным шагом в адаптации социальной сети 
+                    к растущему спросу на мобильные технологии. Пользователи получили возможность скачивать приложение 
+                    из App Store, что сделало доступ к ВКонтакте более удобным и быстрым. Теперь они могли общаться, 
+                    просматривать ленты новостей и делиться контентом прямо со своих мобильных устройств, не прибегая 
+                    к мобильной версии сайта.</p>
+                <p>В июне того же года ВКонтакте расширила свои горизонты, выпустив официальный клиент для телефонов 
+                    на платформе Android. Это решение значительно упростило жизнь пользователей, так как теперь они могли 
+                    использовать полноценное мобильное приложение, которое обеспечивало более удобный интерфейс и функционал 
+                    по сравнению с мобильной версией сайта. Пользователи могли легко загружать фотографии, отправлять сообщения 
+                    и оставаться на связи с друзьями в любое время и в любом месте.</p>
+                <p>Однако у ВКонтакте возникли проблемы с App Store, связанные с авторскими правами. В частности, из-за жалоб 
+                    правообладателей на нарушение авторских прав, социальной сети пришлось убрать музыкальный раздел из приложения 
+                    для iOS. Это решение вызвало недовольство среди пользователей, которые активно использовали ВКонтакте для 
+                    прослушивания музыки и обмена музыкальными композициями. В результате многие пользователи начали искать 
+                    альтернативные платформы для доступа к музыке, что негативно сказалось на популярности ВКонтакте среди меломанов.</p>
+                <p>Полностью легализовать музыкальные композиции во ВКонтакте удалось только в июле 2016 года. 
+                    Это стало возможным благодаря заключению соглашений с крупными музыкальными лейблами и правообладателями, 
+                    что позволило пользователям легально слушать и делиться музыкой на платформе. Легализация музыкального 
+                    контента не только улучшила имидж ВКонтакте, но и позволила вернуть пользователей, которые ранее покинули 
+                    платформу из-за проблем с доступом к музыке.</p>
+            </div>
+            
+            <!-- Картинка справа -->
+            <div style="flex: 1; align-self: center;">
+                <img src="https://martrending.ru/pic/lb4/intext_707c474b-d181-45a8-ac96-ec5c3a8e6856_big.webp" 
+                     alt="Основатели ВКонтакте" 
+                     style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+            </div>
         </section>
         
+        <section id="5">
+            <h3 style="
+            font-size: 24px;
+            margin: 25px 0 5px;
+            padding: 16px 25px;
+            color: #d1e3ff;
+            background: linear-gradient(135deg, #1e2b4a 0%, #131d33 100%);
+            border-radius: 8px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        ">
+            Дуров покидает ВКонтакте
+            <span style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: linear-gradient(90deg, #4facfe, #00f2fe);
+                transition: width 0.3s ease;
+            "></span>
+        </h3>
+        
+        <script>
+            document.querySelector('h3').addEventListener('mouseover', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.querySelector('span').style.width = '100%';
+            });
+            document.querySelector('h3').addEventListener('mouseout', function() {
+                this.style.transform = 'none';
+                this.querySelector('span').style.width = '0';
+            });
+        </script>
+        <p>24 января 2014 года стало известно о продаже Павлом Дуровым своей доли в компании инвестору Ивану Таврину.
+             Однако сама сделка была заключена еще в декабре 2013 года. Перед продажей своей доли Дуровым произошло 
+             множество значительных событий. В апреле 2013 года сооснователи социальной сети Вячеслав Мирилашвили 
+             и Лев Левиев продали свои 48% акций инвестиционному фонду United Capital Partners.</p>
+        <p>В марте 2012 года Павел Дуров удалил страницы сооснователей Вячеслава Мирилашвили и Льва Левиева 
+            из ВКонтакте. По словам Левиева, это решение стало следствием разногласий с Дуровым.
+            В 2011 году 39,99% акций ВКонтакте находились в собственности Mail.ru Group. Руководство 
+            Mail.ru Group высказывало претензии к команде ВКонтакте из-за недостаточной монетизации. 
+            Дуров, ставя интересы пользователей выше интересов правообладателей, препятствовал эффективной 
+            монетизации контента. Эти разногласия перерастали в конфликт, в результате которого Дуров 
+            согласился продать свою долю в ВКонтакте и покинуть компанию.
+            В сентябре 2014 года Mail.ru Group стала единственным владельцем ВКонтакте.</p>
+        </section>
+
+        <section id="6">
+            <h3 style="
+    font-size: 24px;
+    margin: 30px 0 5px 0;
+    padding: 16px 25px;
+    color: #d1e3ff;
+    background: linear-gradient(135deg, #1e2b4a 0%, #131d33 100%);
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+">
+    Развитие ВКонтакте под руководством Mail.ru Group (VK)
+    <span style="
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4facfe, #00f2fe);
+        transition: width 0.3s ease;
+    "></span>
+</h3>
+
+<script>
+    document.querySelector('h3').addEventListener('mouseover', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.querySelector('span').style.width = '100%';
+    });
+    document.querySelector('h3').addEventListener('mouseout', function() {
+        this.style.transform = 'none';
+        this.querySelector('span').style.width = '0';
+    });
+</script>
+        <P>С сентября 2014 года  началось ускоренное развитие платформы, появление новых сервисов 
+            и способов монетизации. 29 декабря 2016 года во ВКонтакте появились истории. Новая функция
+            позволила делиться с друзьями короткими видео и фото, не публикуя их на своей странице. 
+            Сторис отображаются в отдельном блоке и пропадают спустя 24 часа с момента публикации. 
+            16 февраля 2018 года истории стали доступны не только для пользователей, но и для 
+            сообществ.</P>
+            <div style="display: flex; flex-direction: column; gap: 20px; margin: 0 40px 0 0;">
+                <!-- Первый блок: текст + картинка -->
+                <div style="display: flex; align-items: flex-start; gap: 20px;">
+                  <div style="flex: 1;">
+                    <p>12 апреля 2017 года все пользователи и сообщества ВКонтакте получили 
+                      возможность проводить прямые трансляции на ПК. Это стало толчком к выбору платформы 
+                      для проведения стримов и репортажей. Ранее эта функция была доступна только в отдельном 
+                      приложении VK live. 28 апреля 2018 года во ВКонтакте появились защищенные голосовые и 
+                      видеозвонки. В последующем эти функции активно дорабатывались. Например, в 2020 году были 
+                      запущены групповые видеозвонки, в которых могут одновременно общаться до 8 человек.</p>
+                  </div>
+                  <img src="https://avatars.mds.yandex.net/i?id=fd80dbe5873f25497f23c6692cea236bcb5b3dd6-7063851-images-thumbs&n=13" 
+                       alt="Трансляции ВКонтакте" 
+                       style="max-width: 300px; border-radius: 8px;">
+                </div>
+              
+                <!-- Второй блок: текст + картинка -->
+                <div style="display: flex; align-items: flex-start; gap: 20px;">
+                  <div style="flex: 1;">
+                    <p>В ноябре 2019 года платформа выпустила анонс новых инструментов для авторов ВКонтакте, 
+                      в котором упоминается VK Donut. Инструмент помогает авторам монетизировать свое сообщество. 
+                      С подключением донатов подписчики сообщества могут отправлять пожертвования автору. Сумму 
+                      можно отправить единоразово или подключить ежемесячную подписку. ВКонтакте берет себе комиссию 
+                      5% со всех средств, которые пришли с подписки. Остальные деньги автор может вывести на свой 
+                      счет.</p>
+                  </div>
+                  <img src="https://avatars.mds.yandex.net/i?id=5ecb2ea177552b3cc6ae412debc542578fee2bae-4569264-images-thumbs&n=13" 
+                       alt="VK Donut" 
+                       style="max-width: 300px; border-radius: 8px; margin: 0 0 20px 0; ">
+                </div>
+              </div>
+        </section>
+
 
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const accordionItems = document.querySelectorAll('.accordion-item');
-            
-            accordionItems.forEach(item => {
-                const header = item.querySelector('.accordion-header');
+            // Обновленный скрипт для нового аккордеона
+            document.addEventListener('DOMContentLoaded', function() {
+                const accordionItems = document.querySelectorAll('.modern-accordion-item');
                 
-                header.addEventListener('click', () => {
-                    const currentlyActive = document.querySelector('.accordion-item.active');
+                accordionItems.forEach(item => {
+                    const header = item.querySelector('.modern-accordion-header');
                     
-                    if(currentlyActive && currentlyActive !== item) {
-                        currentlyActive.classList.remove('active');
-                    }
-                    
-                    item.classList.toggle('active');
+                    header.addEventListener('click', () => {
+                        const currentlyActive = document.querySelector('.modern-accordion-item.active');
+                        
+                        if(currentlyActive && currentlyActive !== item) {
+                            currentlyActive.classList.remove('active');
+                        }
+                        
+                        item.classList.toggle('active');
+                    });
                 });
             });
-        });
-        </script>
+            </script>
         </section>
     </div>
+    <div class="block2">
+            <section id="selection2">
+        <!-- СОДЕРЖАНИЕ ВКОНТАКТЕ-->    
+                <h2 class="h2">История Telegram</h2>
+                        <div class="modern-accordion">
+                            <div class="modern-accordion-item">
+                                <div class="modern-accordion-header">СОДЕРЖАНИЕ</div>
+                                <div class="modern-accordion-content">
+                                    <a href="#1.1" class="modern-content-link">1. Кто придумал Телеграм</a>
+                                    <a href="#2.2" class="modern-content-link">2. Запуск Телеграм и первые успехи</a>
+                                    <a href="#3.3" class="modern-content-link">3. Телеграм на русском языке</a>
+                                    <a href="#4.4" class="modern-content-link">4. Блокировка Телеграм в России</a>
+                                    <a href="#5.5" class="modern-content-link">5. Telegram Premium</a>
+                                    <a href="#6.6" class="modern-content-link">6. Как развивался функционал Телеграм</a>
+                                </div>
+                            </div>
+                        </div>
+        <section id="1.1">
+            <h3 style="
+    font-size: 24px;
+    margin: 25px 0 5px;
+    padding: 16px 25px;
+    color: #d1e3ff;
+    background: linear-gradient(135deg, #1e2b4a 0%, #131d33 100%);
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+">
+    Кто придумал Телеграм
+    <span style="
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4facfe, #00f2fe);
+        transition: width 0.3s ease;
+    "></span>
+</h3>
+
+<script>
+    document.querySelector('h3').addEventListener('mouseover', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.querySelector('span').style.width = '100%';
+    });
+    document.querySelector('h3').addEventListener('mouseout', function() {
+        this.style.transform = 'none';
+        this.querySelector('span').style.width = '0';
+    });
+</script>
+            <p>Проект мессенджера Телеграм был создан предпринимателем и программистом Павлом Дуровым, 
+                при поддержке его брата Николая Дурова. Николай внес технологический вклад в создание 
+                мессенджера. Именно он разработал собственный уникальный протокол данных, оптимизированный 
+                для работы с несколькими дата-центрами. Это обеспечило Телеграм надежность, безопасность и 
+                скорость в любой сети. Павел же поддержал проект финансово и идеологически.
+
+                На момент запуска Телеграм Павел Дуров уже входил в число российских миллиардеров. 
+                Успех ему принесло создание социальной сети "Вконтакте", долю в которой Дуров продал в 2014 году.</p>
+                <p>Над Телеграм трудилась и продолжает трудиться огромная команда специалистов. Большинство 
+                разработчиков мессенджера родом из Санкт-Петербурга. Однако из-за местных правил в области 
+                IT команда была вынуждена уехать заграницу. По состоянию на 2023 год разработчики базируются в Дубае.</p>
+        </section>
+        <section id="2.2">
+            <h3 style="
+    font-size: 24px;
+    margin: 25px 0 5px;
+    padding: 16px 25px;
+    color: #d1e3ff;
+    background: linear-gradient(135deg, #1e2b4a 0%, #131d33 100%);
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+">
+    Запуск Телеграм и первые успехи
+    <span style="
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4facfe, #00f2fe);
+        transition: width 0.3s ease;
+    "></span>
+</h3>
+
+<script>
+    document.querySelector('h3').addEventListener('mouseover', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.querySelector('span').style.width = '100%';
+    });
+    document.querySelector('h3').addEventListener('mouseout', function() {
+        this.style.transform = 'none';
+        this.querySelector('span').style.width = '0';
+    });
+</script>
+            <p>Изначально Telegram был разработан как эксперимент для тестирования протокола MTProto, который 
+                используется для шифрования сообщений пользователей. Мессенджер был запущен 14 августа 2013 
+                года компанией Digital Fortress, принадлежащей Павлу Дурову. Офис Digital Fortress, создавшей 
+                Telegram, расположен в Буффало, штат Нью-Йорк, что делает США родиной этого мессенджера.</p>
+                
+            <p>На момент своего запуска Telegram был доступен только для устройств на iOS. Альфа-версия для 
+                Android появилась 20 октября 2013 года, а 7 ноября того же года были выпущены приложения для 
+                Windows и macOS, разработанные сторонними программистами. Первоначальный дизайн приложения для 
+                iOS в 2013 году включал квадратные аватарки и отображение историй в верхней части чата, однако 
+                позже эта функция была убрана. Возвращение историй было анонсировано Павлом Дуровым 26 июня 2023 
+                года. Telegram изначально был открытым проектом, и Дуров приглашал разработчиков создавать свои 
+                клиенты на основе протокола MTProto. Для стимулирования интереса к разработке проводились различные 
+                конкурсы, призовой фонд которых мог достигать нескольких миллионов рублей, и любой желающий мог 
+                принять в них участие.</p>
+                
+            <p> 24 ноября 2013 года Дуров сообщил, что количество регистраций в приложениях на базе MTProto достигло 
+                1 миллиона пользователей по всему миру, хотя на тот момент доля российских пользователей в Telegram 
+                была довольно низкой — всего 1%. Telegram по многим показателям обошел более ранний проект Дурова — 
+                социальную сеть ВКонтакте. 7 декабря 2014 года Дуров сообщил, что Telegram достиг отметки в 1 миллиард 
+                сообщений, отправляемых ежедневно, всего через 15 месяцев после запуска. Для сравнения, ВКонтакте 
+                достигла такого показателя только спустя 6,5 лет.</p>
+                
+            <p> Спустя два года после запуска, Telegram достиг отметки в 10 миллиардов сообщений, доставляемых ежедневно.
+                Об этом Дуров сообщил на своей странице ВКонтакте 17 августа 2015 года.</p>
+        </section>
+        <section id="3.3">
+            <h3 style="
+    font-size: 24px;
+    margin: 25px 0 5px;
+    padding: 16px 25px;
+    color: #d1e3ff;
+    background: linear-gradient(135deg, #1e2b4a 0%, #131d33 100%);
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+">
+    Телеграм на русском
+    <span style="
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4facfe, #00f2fe);
+        transition: width 0.3s ease;
+    "></span>
+</h3>
+
+<script>
+    document.querySelector('h3').addEventListener('mouseover', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.querySelector('span').style.width = '100%';
+    });
+    document.querySelector('h3').addEventListener('mouseout', function() {
+        this.style.transform = 'none';
+        this.querySelector('span').style.width = '0';
+    });
+</script>
+            <p>Русский язык стал доступен в Телеграм 11 октября 2017 года. Именно в этот день вышла обновленная версия
+                 мессенджера для iOS и Android.</p>
+
+            <p>"Cегодня мы запускали обновление Telegram — версию 4.4 с трансляцией геопозиции в реальном времени, новым 
+                музыкальным плеером и поддержкой нескольких новых языков. В частности, интерфейс Telegram теперь доступен 
+                на русском и украинском. Это стало возможным благодаря нашей новой платформе translations.telegram.org, 
+                которая позволяет всем желающим совместно работать над переводом интерфейса Telegram на другие языки — и моментально 
+                применять изменения. Таким образом, сегодня родился "русский" (а также украинский, французский, индонезийский и малайский) Telegram." - сообщает Павел Дуров</p>
+
+            <p>Несмотря на популярность Телеграм в России (мессенджер занимает 5-е место среди российских интернет-ресурсов 
+                по объему дневной аудитории в 2023 году), доля российских пользователей в нем не очень большая. Большинство 
+                пользователей Телеграм, согласно исследованию World Population Review, находится в Азии — 38%. Пользователи из 
+                Европы составляют около 27%. А на российских пользователей приходится около 10% от общего числа аудитории мессенджера.</p>
+        </section>
+        <section id="4.4">
+            <h3 style="
+    font-size: 24px;
+    margin: 25px 0 5px;
+    padding: 16px 25px;
+    color: #d1e3ff;
+    background: linear-gradient(135deg, #1e2b4a 0%, #131d33 100%);
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+">
+    Блокировка Телеграм в России
+    <span style="
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4facfe, #00f2fe);
+        transition: width 0.3s ease;
+    "></span>
+</h3>
+
+<script>
+    document.querySelector('h3').addEventListener('mouseover', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.querySelector('span').style.width = '100%';
+    });
+    document.querySelector('h3').addEventListener('mouseout', function() {
+        this.style.transform = 'none';
+        this.querySelector('span').style.width = '0';
+    });
+</script>
+            <p>16 апреля 2018 года в России начался процесс ограничения доступа к мессенджеру Telegram. На тот момент, по словам 
+                Павла Дурова, мессенджер использовали около 15 миллионов россиян.</p>
+            <p>Причиной блокировки стали поправки в законе (374-ФЗ, 375-ФЗ от 6 июля 2016 года), направленные на борьбу с терроризмом. 
+                Согласно этому законопроекту, операторы телекоммуникационных услуг обязаны были хранить сообщения и информацию об 
+                интернет-трафике пользователей в течение полугода, а также предоставлять правоохранительным органам ключи для расшифровки 
+                переписки по запросу. В Telegram ключи для шифрования хранятся на устройствах пользователей, поэтому руководство мессенджера 
+                заявило, что технически не может предоставить эти ключи, так как они не хранятся на серверах Telegram.</p>
+                <div style="display: flex; align-items: flex-start; gap: 20px;">
+                    <img src="https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/2/83/755535872327832.jpg" style="max-width: 400px; border-radius: 8px;">
+                    <div style="flex: 1;">
+                      <p>В октябре 2017 года суд наложил на разработчиков мессенджера штраф в размере 800 тысяч рублей за отказ передать ФСБ ключи для 
+                расшифровки сообщений нескольких пользователей. Попытка обжаловать это решение не увенчалась успехом. 13 апреля 2018 года 
+                Таганский суд Москвы постановил заблокировать Telegram в России за отказ предоставить ключи для дешифрования переписки. 
+                16 апреля 2018 года приложение стало работать нестабильно. На 11-й день блокировки Павел Дуров заявил, что компромисс 
+                в данной ситуации маловероятен. Даже если бы он захотел, выдать ключи для расшифровки всех переписок пользователей было 
+                невозможно из-за технических особенностей шифрования.</p>
+                    </div>
+                  </div>
+
+
+            
+                <div style="display: flex; align-items: flex-start; gap: 20px;">
+                    <div style="flex: 1;">
+                     <p>22 апреля 2018 года Telegram разослал пользователям предложение провести акцию в поддержку
+                 свободного интернета. Пользователям предлагалось запустить бумажные самолетики, ставшие 
+                 символом мессенджера. Дуров также призвал участников акции убрать за собой самолетики 
+                 после завершения мероприятия. Акции в поддержку Telegram прошли во многих городах России.</p>
+                    <p>Телеграм официально разблокировали лишь 18 июня 2020 года. Об этом на своем сайте сообщил сам Роскомнадзор.</p>      
+                    </div>
+                    <img src="https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/5/16/755535897166165.jpg" 
+                         alt="Трансляции ВКонтакте" 
+                         style="max-width: 400px; border-radius: 8px;">
+                  </div>
+
+
+            
+        </section>
+        <section id="5.5">
+            <h3 style="
+    font-size: 24px;
+    margin: 25px 0 5px;
+    padding: 16px 25px;
+    color: #d1e3ff;
+    background: linear-gradient(135deg, #1e2b4a 0%, #131d33 100%);
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+">
+    Telegram Premium
+    <span style="
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4facfe, #00f2fe);
+        transition: width 0.3s ease;
+    "></span>
+</h3>
+
+<script>
+    document.querySelector('h3').addEventListener('mouseover', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.querySelector('span').style.width = '100%';
+    });
+    document.querySelector('h3').addEventListener('mouseout', function() {
+        this.style.transform = 'none';
+        this.querySelector('span').style.width = '0';
+    });
+</script>
+            <p>19 июня 2022 команда Телеграм анонсировала подписку Telegram Premium.</p>
+            <p>Telegram Premium — это платная подписка, расширяющая функции мессенджера. Вы платите 
+                небольшую сумму на развитие сервиса, а взамен получаете дополнительные возможности, 
+                недоступные другим пользователям.</p>
+                <div style="display: flex; align-items: flex-start; gap: 30px; margin: 20px 0;">
+                    <!-- Список слева -->
+                    <div style="flex: 1;">
+                        <h4 style="
+                            font-size: 18px;
+                            color: #4facfe;
+                            margin-bottom: 15px;
+                            padding-left: 10px;
+                            border-left: 3px solid #4facfe;
+                        ">Премиум-пользователи получают:</h4>
+                        
+                        <ul style="
+                            list-style: none;
+                            padding: 0;
+                            margin: 0;
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                            gap: 12px;
+                        ">
+                            <!-- Первый пункт (полная версия) -->
+                            <li style="
+                                padding: 12px 15px 12px 40px;
+                                background: rgba(0, 136, 204, 0.08);
+                                border-radius: 8px;
+                                position: relative;
+                                color: #e7f0ff;
+                                transition: all 0.3s ease;
+                            ">
+                                <span style="
+                                    position: absolute;
+                                    left: 15px;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    width: 18px;
+                                    height: 18px;
+                                    background-color: #4facfe;
+                                    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;
+                                    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;
+                                "></span>
+                                Приоритетный показ историй; Эмодзи статусы
+                            </li>
+                            
+                            <!-- Остальные пункты (можно использовать классы или JS для генерации) -->
+                            <li style="padding: 12px 15px 12px 40px; background: rgba(0, 136, 204, 0.08); border-radius: 8px; position: relative; color: #d1e3ff; transition: all 0.3s ease;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; background-color: #4facfe; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;"></span>
+                                Возможность смотреть истории анонимно
+                            </li>
+                            
+                            <li style="padding: 12px 15px 12px 40px; background: rgba(0, 136, 204, 0.08); border-radius: 8px; position: relative; color: #d1e3ff; transition: all 0.3s ease;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; background-color: #4facfe; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;"></span>
+                                Загрузку файлов до 4 ГБ
+                            </li>
+                            
+                            <li style="padding: 12px 15px 12px 40px; background: rgba(0, 136, 204, 0.08); border-radius: 8px; position: relative; color: #d1e3ff; transition: all 0.3s ease;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; background-color: #4facfe; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;"></span>
+                                Полное отключение рекламы
+                            </li>
+
+                            <li style="padding: 12px 15px 12px 40px; background: rgba(0, 136, 204, 0.08); border-radius: 8px; position: relative; color: #d1e3ff; transition: all 0.3s ease;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; background-color: #4facfe; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;"></span>
+                                До 3-х реакций на одно сообщение 
+                            </li>
+
+                            <li style="padding: 12px 15px 12px 40px; background: rgba(0, 136, 204, 0.08); border-radius: 8px; position: relative; color: #d1e3ff; transition: all 0.3s ease;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; background-color: #4facfe; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;"></span>
+                                Эксклюзивные стикеры 
+                            </li>
+
+                            <li style="padding: 12px 15px 12px 40px; background: rgba(0, 136, 204, 0.08); border-radius: 8px; position: relative; color: #d1e3ff; transition: all 0.3s ease;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; background-color: #4facfe; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;"></span>
+                                Расширенное управление чатом
+                            </li>
+
+                            <li style="padding: 12px 15px 12px 40px; background: rgba(0, 136, 204, 0.08); border-radius: 8px; position: relative; color: #d1e3ff; transition: all 0.3s ease;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; background-color: #4facfe; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;"></span>
+                                Анимированные эмодзи 
+                            </li>
+
+                            <li style="padding: 12px 15px 12px 40px; background: rgba(0, 136, 204, 0.08); border-radius: 8px; position: relative; color: #d1e3ff; transition: all 0.3s ease;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; background-color: #4facfe; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;"></span>
+                                Неограниченный объем облачного хранилища
+                            </li>
+
+                            <li style="padding: 12px 15px 12px 40px; background: rgba(0, 136, 204, 0.08); border-radius: 8px; position: relative; color: #d1e3ff; transition: all 0.3s ease;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; background-color: #4facfe; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;"></span>
+                                Возможность закрепить до 10 чатов 
+                            </li>
+
+                            <li style="padding: 12px 15px 12px 40px; background: rgba(0, 136, 204, 0.08); border-radius: 8px; position: relative; color: #d1e3ff; transition: all 0.3s ease;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; background-color: #4facfe; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;"></span>
+                                Эксклюзивный значок рядом с именем 
+                            </li>
+
+                            <li style="padding: 12px 15px 12px 40px; background: rgba(0, 136, 204, 0.08); border-radius: 8px; position: relative; color: #d1e3ff; transition: all 0.3s ease;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; background-color: #4facfe; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;"></span>
+                                Динамичный перевод сообщей на ин. языках 
+                            </li>
+
+                            <li style="padding: 12px 15px 12px 40px; background: rgba(0, 136, 204, 0.08); border-radius: 8px; position: relative; color: #d1e3ff; transition: all 0.3s ease;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; background-color: #4facfe; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;"></span>
+                                Текстовая расшифровка голосовых сообщений
+                            </li>
+
+                            <li style="padding: 12px 15px 12px 40px; background: rgba(0, 136, 204, 0.08); border-radius: 8px; position: relative; color: #d1e3ff; transition: all 0.3s ease;">
+                                <span style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; background-color: #4facfe; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat center;"></span>
+                                Скачивание фото, видео и тд без ограниченной скорости
+                            </li>
+                            <!-- Остальные пункты аналогично -->
+                        </ul>
+                    </div>
+                    
+                    <!-- Видео справа -->
+                    <div style="flex: 1; align-self: center;">
+                        <video controls autoplay loop muted width="420" poster="preview.jpg" style="border-radius: 15px; margin: 0 5px 0 55px;">
+                            <source src="kkk.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает видео.
+                          </video>
+                    </div>
+                </div>
+                
+                <!-- Адаптация для мобильных -->
+                <style>
+                    @media (max-width: 768px) {
+                        div[style*="display: flex"] {
+                            flex-direction: column;
+                        }
+                        
+                        div[style*="flex: 1"] {
+                            width: 100%;
+                        }
+                    }
+                </style>
+        </section>
+        <section id="6.6">
+            <h3 style="
+    font-size: 24px;
+    margin: 25px 0 5px;
+    padding: 16px 25px;
+    color: #d1e3ff;
+    background: linear-gradient(135deg, #1e2b4a 0%, #131d33 100%);
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+">
+    Как развивался функционал Телеграм
+    <span style="
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4facfe, #00f2fe);
+        transition: width 0.3s ease;
+    "></span>
+</h3>
+
+<script>
+    document.querySelector('h3').addEventListener('mouseover', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.querySelector('span').style.width = '100%';
+    });
+    document.querySelector('h3').addEventListener('mouseout', function() {
+        this.style.transform = 'none';
+        this.querySelector('span').style.width = '0';
+    });
+</script>
+            <p>Первоначально Telegram был разработан как мессенджер для общения между двумя пользователями. 
+                Однако со временем разработчики начали добавлять новые функции, и приложение стало все больше 
+                напоминать полноценную социальную сеть.</p>
+            <p>В мае 2017 года в Telegram появились "кружки" — видеозаписи длиной до одной минуты, которые 
+                пользователи могут записывать с помощью ПК или смартфона. Интересно, что у конкурента 
+                Telegram — WhatsApp — функция видеосообщений появилась только в 2023 году.<br>
+                30 декабря 2021 года команда Telegram анонсировала новый элемент взаимодействия — реакции. 
+                Реакции представляют собой эмодзи, которые пользователи могут оставлять к публикациям, 
+                сообщениям или комментариям. Это своего рода аналог лайков, позволяющий пользователям 
+                выразить свое отношение к контенту.</p>
+            <p>26 июня 2023 года Павел Дуров объявил о запуске функции Stories. В начале июля истории 
+                стали доступны во всех аккаунтах. Это короткие видео или фотографии, которые размещаются 
+                над лентой чатов и представляют собой формат временного контента. Каждую историю в Telegram 
+                можно настроить, выбрав, кто сможет ее видеть, а также установить срок доступности — 6, 12, 
+                24 или 48 часов.</p>
+        </section>
+    </div>
+    <!-- ТРЕТИЙ БЛОК -->
+    <div class="block3">
+        <h1 style="
+    font-size: 32px;
+    margin: 30px 0;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e0edff 100%);
+    color: #000000;
+    border-radius: 40px;
+    display: inline-block;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid rgba(74, 144, 226, 0.15);
+    letter-spacing: 0.5px;
+    font-family: 'Jost', sans-serif;
+    transition: all 0.3s ease;
+">
+    <!-- Декоративные элементы -->
+    <span style="
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        width: 40px;
+        height: 40px;
+        background: radial-gradient(circle, #4facfe 0%, transparent 70%);
+        opacity: 0.3;
+        border-radius: 50%;
+    "></span>
+    <span style="
+        position: absolute;
+        bottom: -20px;
+        left: -20px;
+        width: 50px;
+        height: 50px;
+        background: radial-gradient(circle, #00f2fe 0%, transparent 70%);
+        opacity: 0.2;
+        border-radius: 50%;
+    "></span>
+    
+    <!-- Текст -->
+    <span style="position: relative; z-index: 2;">
+        Характеристика мессенджеров
+    </span>
+</h1>
+
+<style>
+    h1:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 26px;
+            padding: 12px 24px;
+            margin: 25px 0;
+            border-radius: 32px;
+        }
+    }
+</style>
+        <section class="split-section" id="selection3">
+    <!-- Характеристика--> 
+    <div class="left-part" contenteditable="true">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <h2 style="padding: 0 0 0 40px; font-size: 30px; margin: 0;">ВКонтакте</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/2048px-VK.com-logo.svg.png" 
+                 alt="VK Logo" 
+                 style="width: 30px; height: 30px;">
+        </div>
+                     <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Название:</div>
+                             <div class="description-text">
+                            ВКонтакте (VK)
+                            </div>
+                        </div>
+                     </div>
+                     <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Год Запуска:</div>
+                             <div class="description-text">
+                            2006
+                            </div>
+                        </div>
+                     </div>
+                     <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Страна Запуска:</div>
+                             <div class="description-text">
+                            Россия, Санкт-Петербург
+                            </div>
+                        </div>
+                     </div>
+                     <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Создатель:</div>
+                             <div class="description-text">
+                            Павел Дуров
+                            </div>
+                        </div>
+                     </div>
+                     <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Компания:</div>
+                             <div class="description-text">
+                            "Газпром"
+                            </div>
+                        </div>
+                     </div>
+                     <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Описание:</div>
+                             <div class="description-text">
+                                ВКонтакте (VK) — это социальная сеть, объединяющая 
+                                множество инструментов и сервисов. Простыми словами,
+                                бесплатная соцсеть для публикации фото, видео, клипов,
+                                обмена сообщениями и продажи товаров.
+                            </div>
+                        </div>
+                     </div>
+                     <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Ссылки:</div>
+                            <div class="description-text">
+                                Веб-сайт ВКонтакте — <a href="https://vk.com/feed" target="_blank" rel="noopener noreferrer">vk.com</a><br>
+                                Мобильное приложение ВКонтакте:
+                                <a href="https://apps.apple.com/ru/app/%D0%B2%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5-%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%D1%87%D0%B0%D1%82/id564177498" 
+                                   target="_blank" rel="noopener noreferrer">iOS</a>,
+                                <a href="https://play.google.com/store/apps/details?id=com.vkontakte.android&pli=1" 
+                                   target="_blank" rel="noopener noreferrer">Android</a><br>
+                                Мобильная версия ВКонтакте — 
+                                <a href="https://m.vk.com" target="_blank" rel="noopener noreferrer">m.vk.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 style="padding: 0 0 0 10px;">Функции:</h2>
+                    <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Публикации:</div>
+                             <div class="description-text">
+                            Публикации в ВК — это сообщения, которые можно размещать на личных страницах, в пабликах и сообществах.
+                            </div>
+                        </div>
+                     </div>
+                     <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Сторис:</div>
+                             <div class="description-text">
+                            Функция Истории (Сторис) позволяет делиться контентом, фото и короткими видео в отдельной ленте сторис. Истории можно размещать как на личных страницах, так и в сообществах. Максимальная длина видео для сторис - 15 сек.
+                            </div>
+                        </div>
+                     </div>
+                     <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Клипы:</div>
+                             <div class="description-text">
+                                короткие вертикальные видео, аналог роликов из TikTok. Все клипы попадают в общую ленту, где их может увидеть любой пользователь ВКонтакте. Длительность ролика может быть до 3 минут.
+                            </div>
+                        </div>
+                     </div>
+                     <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Донаты:</div>
+                             <div class="description-text">
+                                платная подписка, которую можно оплатить единоразово или оформить как ежемесячное пожертвование автору сообщества. В благодарность автор может предоставить своим донам доступ к эксклюзивному контенту или закрытому чату.
+                            </div>
+                        </div>
+                     </div>
+                     <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Vmoji:</div>
+                             <div class="description-text">
+                                уникальный цифровой аватар, из которого можно сделать стикеры со своим лицом. Цифровой аватар можно создать вручную или загрузив свое селфи и позволив искусственному интеллекту сгенерировать максимально похожего на вас виртуального персонажа.
+                            </div>
+                        </div>
+                     </div>
+                     <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Продажа товаров:</div>
+                             <div class="description-text">
+                             В ВК любой желающий может создать магазин. Это будет полноценная онлайн-витрина,
+                             где у каждого товара есть своя карточка с описанием, ценой, фотографиями. 
+                             Товары можно распределить по разным разделам, продвигать их через рекламу. 
+                             При желании можно подключить оплату через VK Pay, чтобы покупатель мог 
+                             приобрести товар не выходя из ВКонтакте. Создание бесплатное.
+                            </div>
+                        </div>
+                     </div><div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Сообщества:</div>
+                             <div class="description-text">
+                            группа пользователей, объединенных общими интересами или темами. Оно служит 
+                            площадкой для общения, обмена информацией и продвижения бизнеса или блогов.
+                            </div>
+                        </div>
+                     </div>
+                     <div class="description-block">
+                        <div class="description-header">
+                            <div class="description-title">Продвижение<br> творческих<br> проектов:</div>
+                             <div class="description-text">
+                            ВКонтакте оказывает поддержку авторам. Здесь можно создавать, продвигать и монетизировать творческие сообщества, будь то музыкальный проект или объединение художников.
+                            </div>
+                        </div>
+                     </div>
+                     
+
+            </div>
+            <div class="right-part" contenteditable="true">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <h2 style="padding: 0 0 0 40px; font-size: 30px; margin: 6px 0;">Телеграм</h2>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png" 
+                         alt="Telegram Logo" 
+                         style="width: 30px; height: 30px;">
+                </div>
+                <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Название:</div>
+                         <div class="description-text">
+                        Telegram(Телеграм)
+                        </div>
+                    </div>
+                 </div>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Год запуска:</div>
+                         <div class="description-text">
+                        2014
+                        </div>
+                    </div>
+                 </div>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Страна Запуска:</div>
+                         <div class="description-text">
+                        США, Нью-Йорк
+                        </div>
+                    </div>
+                 </div>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Создатель:</div>
+                         <div class="description-text">
+                        Николай Дуров, Павел Дуров
+                        </div>
+                    </div>
+                 </div>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Компания:</div>
+                         <div class="description-text">
+                            Telegram FZ LLC
+                        </div>
+                    </div>
+                 </div>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Описание:</div>
+                         <div class="description-text">
+                            Телеграм (Telegram) — это приложение, в котором можно обмениваться сообщениями, создавать группы, каналы и делиться в них контентом. Простыми словами, бесплатный мессенджер для общения, отправки медиафайлов, публикации текста, видео и аудиосообщений.
+                        </div>
+                    </div>
+                 </div>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Ссылки:</div>
+                         <div class="description-text">
+                            Официальный сайт Телеграм — <a href="https://telegram.org/">telegram.org;</a><br>
+                            Мобильное приложение Телеграм — <a href="https://apps.apple.com/us/app/telegram-messenger/id686449807" >iOS</a>/
+                            <a href="https://telegram.org/android" > Android;</a><br>
+                            Веб-версия Телеграм — <a href="https://web.telegram.org/a/" >web.telegram.org;</a><br>
+                        </div>
+                    </div>
+                 </div>
+                 <h2 style="padding: 0 0 0 10px;">Функции:</h2>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Сообщения:</div>
+                         <div class="description-text">
+                            Основная функция Телеграм — обмен сообщениями. Сообщения можно отправлять конкретному пользователю в личной переписке, присылать в групповые чаты или выкладывать в канале. Они могут быть в виде текста, кружков (видео) и голосовых сообщений.
+                        </div>
+                    </div>
+                 </div>
+                 <p><b>Лимиты для сообщений в телеграм:</b></p>
+                 <ul>
+                    <li>Максимальная длина текста в одном сообщении (посте) — 4096 символов;</li>
+                    <li>При публикации текста большего размера он автоматически будет разделен на несколько сообщений;</li>
+                    <li>К одному сообщению можно прикрепить до 10 файлов (фото или видео) объемом до 2 Гб (4 ГБ в Telegram Premium);</li>
+                    <li>Сообщение с медиафайлами может содержать до 1024 символов (2048 символов в Telegram Premium).</li>
+                 </ul>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Истории:</div>
+                         <div class="description-text">
+                            Истории (сторис) в Телеграм — это временный формат публикаций. Они отображаются над списком чатов. Другие пользователи видят кружки с аватаркой пользователя или канала.
+                        </div>
+                    </div>
+                 </div>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Закрепление<br>сообщений и чатов:</div>
+                         <div class="description-text">
+                            Чтобы не потерять важные сообщения или чаты в Телеграм, можно закрепить их. Для этого достаточно зажать нужное сообщение или чат, и выбрать "Закрепить".В ленте можно закрепить не более 5 чатов или каналов. У владельцев подписки Telegram Premium этот лимит повышается до 10. В чатах можно закрепить более 10 сообщений.
+                        </div>
+                    </div>
+                 </div>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Отложененные<br> сообщения:</div>
+                         <div class="description-text">
+                            В Телеграм есть функция отложенных сообщений. Она незаменима в том случае, если вам нужно отправить сообщение в конкретное время, но вы не уверены, что сможете быть в этот момент онлайн.
+                        </div>
+                    </div>
+                 </div>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Скрытый чат:</div>
+                         <div class="description-text">
+                            В Телеграм есть функция "Скрытый чат". Как утверждают разработчики мессенджера, в скрытых чатах используется технология сквозного шифрования (проще говоря, сообщение видит только сам пользователь и его собеседник).
+                            Сообщения из секретных чатов нельзя переслать кому-либо. Если удалить свое сообщение, оно будет тут же удалено и у собеседника. Помимо этого, в чате можно установить самоуничтожение по времени. Например, чтобы чат полностью стирался у обоих собеседников через 24 часа.
+                        </div>
+                    </div>
+                 </div>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Чат-боты:</div>
+                         <div class="description-text">
+                            В Телеграм есть чат-боты. Это небольшие программы, которые работают в самом мессенджере. Их может создать любой сторонний разработчик с использованием Telegram Bot API. Боты бывают платные и бесплатные.
+                        </div>
+                    </div>
+                 </div>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Онлайн-консультирование:</div>
+                         <div class="description-text">
+                            Телеграм можно использовать в качестве мессенджера для обратной связи. Современным людям в большинстве случаев проще написать в мессенджер, чем звонить на горячую линию и ждать ответа оператора.
+                        </div>
+                    </div>
+                 </div>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Продвижение<br> личного бренда:</div>
+                         <div class="description-text">
+                            Телеграм подходит для продвижения личного бренда. Здесь можно делиться моментами из жизни, публиковать свои мысли, практически без ограничений по символам. Имеет смысл вкладываться в Телеграм, если вы планируете монетизировать свой личный бренд, например, продавать курсы, оказывать услуги.
+                        </div>
+                    </div>
+                 </div>
+                 <div class="description-block">
+                    <div class="description-header">
+                        <div class="description-title">Заработок на рекламе:</div>
+                         <div class="description-text">
+                            В Телеграм практически нет рекламы. У пользователей есть возможность купить спонсорские сообщения, они будут отображаться небольшим блоком внизу чата. Но это дорого и не очень удобно, поэтому пользователи предпочитают продвигаться через нативную рекламу.
+                            Добавляя рекламные посты в свой канал, можно зарабатывать в среднем от 500 до 50 000 рублей за одно сообщение
+                        </div>
+                    </div>
+                 </div>
+        </div>
+    </div>
+
+  <!-- ЧЕТВЕРТЫЙ БЛОК -->
+<div class="block4">
+    
+    <h1 style="
+    font-size: 32px;
+    margin: 30px 0;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e0edff 100%);
+    color: #2a5885;
+    border-radius: 40px;
+    display: inline-block;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid rgba(74, 144, 226, 0.15);
+    letter-spacing: 0.5px;
+    font-family: 'Jost', sans-serif;
+    transition: all 0.3s ease;
+">
+    <!-- Декоративные элементы -->
+    <span style="
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        width: 40px;
+        height: 40px;
+        background: radial-gradient(circle, #4facfe 0%, transparent 70%);
+        opacity: 0.3;
+        border-radius: 50%;
+    "></span>
+    <span style="
+        position: absolute;
+        bottom: -20px;
+        left: -20px;
+        width: 50px;
+        height: 50px;
+        background: radial-gradient(circle, #00f2fe 0%, transparent 70%);
+        opacity: 0.2;
+        border-radius: 50%;
+    "></span>
+    
+    <!-- Текст -->
+    <span style="position: relative; z-index: 2;">
+       Плюсы/Минусы
+    </span>
+</h1>
+
+<style>
+    h1:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 26px;
+            padding: 12px 24px;
+            margin: 25px 0;
+            border-radius: 32px;
+        }
+    }
+</style>
+    <div class="plus">
+        <h3>ПЛЮСЫ</h3>
+    </div>
+    <section id="selection4" class="split-section">
+        <div class="left-part">
+            <style>
+                .feature-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 20px 0;
+                    counter-reset: feature-counter;
+                }
+                
+                .feature-item {
+                    padding: 14px 20px 14px 60px;
+                    margin-bottom: 12px;
+                    background: rgba(74, 118, 168, 0.05);
+                    border-radius: 8px;
+                    position: relative;
+                    transition: all 0.3s ease;
+                    font-size: 16px;
+                    line-height: 1.6;
+                    border-left: 3px solid transparent;
+                }
+                
+                .feature-item:hover {
+                    background: rgba(74, 118, 168, 0.12);
+                    border-left: 3px solid #4a76a8;
+                    transform: translateX(5px);
+                }
+                
+                .feature-item::before {
+                    content: '';
+                    position: absolute;
+                    left: 20px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 24px;
+                    height: 24px;
+                    background-color: #4a76a8;
+                    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>');
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                }
+                
+                .platform-header {
+                    padding: 0 0 12px 40px;
+                    font-size: 28px;
+                    color: #4a76a8;
+                    border-bottom: 2px solid rgba(74, 118, 168, 0.2);
+                    margin: 30px 0 20px;
+                    display: flex;
+                    align-items: center;
+                }
+                
+                .vk-icon {
+                    display: inline-block;
+                    width: 32px;
+                    height: 32px;
+                    background: url('https://vk.com/favicon.ico') center/contain no-repeat;
+                    margin-right: 12px;
+                }
+            </style>
+            
+            <h2 class="platform-header">
+                <span class="vk-icon"></span>
+                ВКонтакте
+            </h2>
+            
+            <ul class="feature-list">
+                <li class="feature-item">Покупка рекламы</li>
+                <li class="feature-item">Множество функций</li>
+                <li class="feature-item">Возможность донатов</li>
+                <li class="feature-item">Есть инструменты для бизнеса</li>
+                <li class="feature-item">Самая популярная социальная сеть в России</li>
+                <li class="feature-item">Есть возможность настроить таргетированную рекламу</li>
+            </ul>
+        </div>
+        <div class="right-part">
+            <style>
+                /* Общие стили списка (можно вынести в отдельный класс) */
+                .tg-feature-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 20px 0;
+                }
+                
+                .tg-feature-item {
+                    padding: 14px 20px 14px 60px;
+                    margin-bottom: 12px;
+                    background: rgba(0, 136, 204, 0.05);
+                    border-radius: 8px;
+                    position: relative;
+                    transition: all 0.3s ease;
+                    font-size: 16px;
+                    line-height: 1.6;
+                    border-left: 3px solid transparent;
+                }
+                
+                .tg-feature-item:hover {
+                    background: rgba(0, 136, 204, 0.12);
+                    border-left: 3px solid #0088cc;
+                    transform: translateX(5px);
+                }
+                
+                .tg-feature-item::before {
+                    content: '';
+                    position: absolute;
+                    left: 20px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 24px;
+                    height: 24px;
+                    background-color: #0088cc;
+                    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>');
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                }
+                
+                .tg-platform-header {
+                    padding: 0 0 12px 40px;
+                    font-size: 28px;
+                    color: #0088cc;
+                    border-bottom: 2px solid rgba(0, 136, 204, 0.2);
+                    margin: 30px 0 20px;
+                    display: flex;
+                    align-items: center;
+                }
+                
+                .tg-icon {
+                    display: inline-block;
+                    width: 32px;
+                    height: 32px;
+                    background: url('https://telegram.org/favicon.ico') center/contain no-repeat;
+                    margin-right: 12px;
+                }
+            </style>
+            
+            <h2 class="tg-platform-header">
+                <span class="tg-icon"></span>
+                Telegram
+            </h2>
+            
+            <ul class="tg-feature-list">
+                <li class="tg-feature-item">Интерфейс доступен на 32 языках</li>
+                <li class="tg-feature-item">Охват пользователей по всему миру</li>
+                <li class="tg-feature-item">Простой и доступный в использовании</li>
+                <li class="tg-feature-item">Длина одного сообщения до 4096 символов</li>
+                <li class="tg-feature-item">Есть секретный чат для приватного общения</li>
+                <li class="tg-feature-item">Можно использовать как мессенджер или вести каналы</li>
+            </ul>
+        </div>
+    </section>
+    
+    <div class="plus">
+        <h3>МИНУСЫ</h3>
+    </div>
+    <section class="split-section">
+        <div class="left-part">
+            <style>
+                .feature-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 20px 0;
+                    counter-reset: feature-counter;
+                }
+                
+                .feature-item {
+                    padding: 14px 20px 14px 60px;
+                    margin-bottom: 12px;
+                    background: rgba(74, 118, 168, 0.05);
+                    border-radius: 8px;
+                    position: relative;
+                    transition: all 0.3s ease;
+                    font-size: 16px;
+                    line-height: 1.6;
+                    border-left: 3px solid transparent;
+                }
+                
+                .feature-item:hover {
+                    background: rgba(74, 118, 168, 0.12);
+                    border-left: 3px solid #4a76a8;
+                    transform: translateX(5px);
+                }
+                
+                .feature-item::before {
+                    content: '';
+                    position: absolute;
+                    left: 20px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 24px;
+                    height: 24px;
+                    background-color: #4a76a8;
+                    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>');
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                }
+                
+                .platform-header {
+                    padding: 0 0 12px 40px;
+                    font-size: 28px;
+                    color: #4a76a8;
+                    border-bottom: 2px solid rgba(74, 118, 168, 0.2);
+                    margin: 30px 0 20px;
+                    display: flex;
+                    align-items: center;
+                }
+                
+                .vk-icon {
+                    display: inline-block;
+                    width: 32px;
+                    height: 32px;
+                    background: url('https://vk.com/favicon.ico') center/contain no-repeat;
+                    margin-right: 12px;
+                }
+            </style>
+            
+            <h2 class="platform-header">
+                <span class="vk-icon"></span>
+                ВКонтакте
+            </h2>
+            
+            <ul class="feature-list">
+                <li class="feature-item">Много спама и мошенников;</li>
+                <li class="feature-item">Реклама, отвлекающая внимание;</li>
+                <li class="feature-item">Нет большого охвата зарубежной аудитории;</li>
+                <li class="feature-item">Переизбыток сторонних сервисов и вкладок.</li>
+            </ul>
+        </div>
+        <div class="right-part" >
+            <style>
+                /* Общие стили списка (можно вынести в отдельный класс) */
+                .tg-feature-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 20px 0;
+                }
+                
+                .tg-feature-item {
+                    padding: 14px 20px 14px 60px;
+                    margin-bottom: 12px;
+                    background: rgba(0, 136, 204, 0.05);
+                    border-radius: 8px;
+                    position: relative;
+                    transition: all 0.3s ease;
+                    font-size: 16px;
+                    line-height: 1.6;
+                    border-left: 3px solid transparent;
+                }
+                
+                .tg-feature-item:hover {
+                    background: rgba(0, 136, 204, 0.12);
+                    border-left: 3px solid #0088cc;
+                    transform: translateX(5px);
+                }
+                
+                .tg-feature-item::before {
+                    content: '';
+                    position: absolute;
+                    left: 20px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 24px;
+                    height: 24px;
+                    background-color: #0088cc;
+                    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>');
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                }
+                
+                .tg-platform-header {
+                    padding: 0 0 12px 40px;
+                    font-size: 28px;
+                    color: #0088cc;
+                    border-bottom: 2px solid rgba(0, 136, 204, 0.2);
+                    margin: 30px 0 20px;
+                    display: flex;
+                    align-items: center;
+                }
+                
+                .tg-icon {
+                    display: inline-block;
+                    width: 32px;
+                    height: 32px;
+                    background: url('https://telegram.org/favicon.ico') center/contain no-repeat;
+                    margin-right: 12px;
+                }
+            </style>
+            
+            <h2 class="tg-platform-header">
+                <span class="tg-icon"></span>
+                Telegram
+            </h2>
+            
+            <ul class="tg-feature-list">
+                <li class="tg-feature-item">Нет ленты новостей и рекомендаций;</li>
+                <li class="tg-feature-item">Регистрация только по номеру телефона;</li>
+                <li class="tg-feature-item">Нет таргетированной рекламы по пользователям;</li>
+                <li class="tg-feature-item">Сложно удерживать охваты, когда у подписчиков много чатов и они не успевают читать все каналы.</li>
+            </ul>
+        </div>
+    </section>
+</div>
+    
+
+
+
+    
+    
+    
 </body>
 </html>
